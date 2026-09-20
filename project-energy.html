@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forecasting Germany's Energy Consumption to 2030 — Sajith Pemarathna</title>
+<meta name="description" content="MSc dissertation forecasting German sector and carrier-level energy demand to 2030 using LSTM networks and Tableau.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="nav-name" href="index.html">Sajith Pemarathna</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="index.html#work" aria-current="page">Projects</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <a class="btn btn-solid" href="cv/Sajith-Pemarathna-CV.pdf" download>Download CV</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<article class="case-head">
+  <div class="wrap">
+    <a class="back-link" href="index.html#work">Back to all projects</a>
+    <h1 class="case-title">Forecasting Germany's Energy Consumption to 2030</h1>
+    <p class="case-kicker">Python, LSTM, SQL, Tableau &middot; MSc dissertation, BSBI 2025</p>
+
+    <p class="case-intro">Sector and carrier-level forecasts of German energy demand, built on 26 years of Destatis data covering 48 production branches and 12 energy carriers, totalling 1.12 billion terajoules of recorded consumption. Random Forest, XGBoost, Bi-GRU and LSTM were compared on chronological train and test splits using MSE, RMSE, MAE and MAPE. Three stacked LSTM networks produced the final 2021 to 2030 forecasts for total, sector and carrier demand, predicting recursively by feeding each year back in as input for the next. Four Tableau dashboards carry the results.</p>
+
+    <div class="page-block">
+      <h4>Consumption overview, 1995 to 2020</h4>
+      <figure class="shot">
+        <a href="images/energy-1-overview.jpg"><img src="images/energy-1-overview.jpg" alt="Tableau dashboard showing total German energy consumption by sector, yearly trend and annual growth rate" onerror="this.closest('figure').remove()"></a>
+      </figure>
+      <p>Two sectors dominate and are almost evenly matched: <strong>electricity, gas, steam and air conditioning at 150.98M TJ</strong> and coke and refined petroleum products at 148.89M TJ, against 35.30M TJ for the next largest. Annual growth swings widely, from <strong>-7.31% to +3.31%</strong>, with the sharpest contractions in the 2009 downturn and again in 2020.</p>
+    </div>
+
+    <div class="page-block">
+      <h4>Sector and carrier breakdown</h4>
+      <figure class="shot">
+        <a href="images/energy-2-sector-carrier.jpg"><img src="images/energy-2-sector-carrier.jpg" alt="Tableau dashboard breaking energy carrier usage down by sector and year" onerror="this.closest('figure').remove()"></a>
+      </figure>
+      <p>Crude oil is by far the largest carrier across the period at <strong>111.67M TJ</strong>, ahead of electricity and other energy sources at 41.84M TJ, brown coal at 37.15M TJ and hard coal at 30.80M TJ. Total renewable consumption reached 1.48M TJ in 2020. The year-by-year matrix makes the divergence legible: carriers holding steady, carriers in structural decline, and renewables climbing from a near-zero base.</p>
+    </div>
+
+    <div class="page-block">
+      <h4>Forecast to 2030</h4>
+      <figure class="shot">
+        <a href="images/energy-3-forecast.jpg"><img src="images/energy-3-forecast.jpg" alt="Tableau dashboard showing annual, sector-wise and carrier-wise energy forecasts through 2030" onerror="this.closest('figure').remove()"></a>
+      </figure>
+      <p>Demand flattens rather than falls. The annual model projects total use settling between roughly <strong>17,100 and 17,500 petajoules</strong> per year through 2030, well below the 2006 peak but above the 2020 low of 15,480. <strong>Crude oil remains the largest single carrier in 2030 at 3.70M TJ</strong>, ahead of electricity at 2.49M TJ and gases at 2.17M TJ. That is the finding with the most direct policy weight: on consumption trends alone, the carrier mix does not invert within the decade.</p>
+    </div>
+
+    <div class="page-block">
+      <h4>Renewable transition</h4>
+      <figure class="shot">
+        <a href="images/energy-4-renewables.jpg"><img src="images/energy-4-renewables.jpg" alt="Tableau dashboard comparing renewable and non-renewable energy trends and sectoral adoption" onerror="this.closest('figure').remove()"></a>
+      </figure>
+      <p>Renewables grew from <strong>1.03% of total consumption in 1995 to 10.34% in 2020</strong>, a tenfold rise from a very small base. Adoption is deeply uneven by sector, ranging from 10.54% to 75.00%: services and commercial activities moved fastest, energy-intensive industries running high-temperature processes lag furthest behind, and transport still runs mainly on diesel and petrol.</p>
+    </div>
+
+    <div class="page-block">
+      <h4>Forecast checked against published figures</h4>
+      <table class="check">
+        <caption>Annual total energy consumption, petajoules</caption>
+        <thead><tr><th scope="col">Year</th><th scope="col">Forecast</th><th scope="col">Published</th></tr></thead>
+        <tbody>
+          <tr><td>2021</td><td>17,470</td><td>15,935</td></tr>
+          <tr><td>2022</td><td>17,301</td><td>15,421</td></tr>
+          <tr><td>2023</td><td>17,159</td><td>14,905</td></tr>
+        </tbody>
+      </table>
+      <p><span class="flag">The model ran 10 to 15% high.</span> A network trained only on consumption history cannot see the post-COVID economy, coal plants closing earlier than planned, or new renewable incentives. Published figures from AG Energiebilanzen. The size and direction of the gap is the argument for adding econometric and policy inputs to the next version.</p>
+    </div>
+
+    <div class="stack-line">
+      <b>How it is built</b>
+      Two Destatis GENESIS tables cleaned in Excel, with duplicates removed, placeholder values resolved, branch and carrier names standardised and outliers handled by the IQR method. Loaded into SQLite, reshaped wide to long and aggregated into yearly totals, totals per carrier and each carrier's share. The three LSTM networks all use a five-year input window, min-max scaling, dropout after each layer and the Adam optimiser, with forecasts exported to Tableau.
+    </div>
+
+    <div class="stack-line">
+      <b>Limits</b>
+      Each series carries only 26 annual observations, which caps what any model can learn. The models see consumption history alone, with no GDP, inflation, policy or climate variables. LSTM training is unseeded, so forecasts shift between runs.
+    </div>
+
+    <div class="links">
+      <a href="https://github.com/Sajithpemarathna/Energy-Consumption-Forecasting-in-Germany-Using-Machine-Learning">Repository on GitHub</a>
+      <a href="https://public.tableau.com/views/EnergyConsumptionOverview_17381460669580/EnergyConsumptionOverview">Consumption overview</a>
+      <a href="https://public.tableau.com/views/EnergyUsagebySectorandCarrier/EnergyUsagebySectorandCarrier">Sector and carrier</a>
+      <a href="https://public.tableau.com/views/EnergyConsumptionForecastinGermany1995-2030/GermanysEnergyConsumptionForecast1995-2030">Forecast to 2030</a>
+      <a href="https://public.tableau.com/views/RenewablevsNon-RenewableEnergyTrends/RenewablevsNon-RenewableEnergyTrends">Renewable transition</a>
+    </div>
+
+  </div>
+</article>
+
+<div class="wrap">
+  <nav class="case-nav" aria-label="Other projects">
+    <a href="project-marketplace.html"><small>Previous project</small>E-Commerce Marketplace Performance Analytics</a>
+    <a href="project-freight.html" style="text-align:right;"><small>Next project</small>Air Freight Cost and Delivery Reliability</a>
+  </nav>
+</div>
+</main>
+
+<footer id="contact" class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h2>Let's connect</h2>
+        <p>I am available immediately and happy to relocate anywhere in Germany. Open to analyst, business intelligence and analytics engineering roles, and always glad to talk about data.</p>
+        <p style="margin-top:24px;"><a class="btn btn-solid" href="cv/Sajith-Pemarathna-CV.pdf" download>Download CV</a></p>
+      </div>
+      <div class="footer-links">
+        <a href="mailto:sajiths.pemarathna@gmail.com">sajiths.pemarathna@gmail.com</a>
+        <a href="https://www.linkedin.com/in/sajith-pemarathna">LinkedIn</a>
+        <a href="https://github.com/Sajithpemarathna">GitHub</a>
+        <a href="https://public.tableau.com/app/profile/sajith.pemarathna">Tableau Public</a>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>&copy; 2026 Sajith Pemarathna</span>
+      <span>Berlin, Germany</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
