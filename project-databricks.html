@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Customer Journey and Revenue Analytics on Databricks &mdash; Sajith Pemarathna</title>
+<meta name="description" content="A Databricks lakehouse pipeline processing 3M+ e-commerce events into daily funnel and product metrics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="nav-name" href="index.html">Sajith Pemarathna</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="index.html#work" aria-current="page">Projects</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="btn btn-solid" href="mailto:sajiths.pemarathna@gmail.com?subject=CV%20request" data-cv-request>Request CV</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<article class="case-head">
+  <div class="wrap">
+    <a class="back-link" href="index.html#work">Back to all projects</a>
+    <h1 class="case-title">Customer Journey and Revenue Analytics on Databricks</h1>
+    <p class="case-kicker">Databricks, PySpark, Spark SQL, Delta Lake</p>
+
+    <p class="case-intro">A lakehouse pipeline that moves more than 3M raw e-commerce event records through landing, bronze, silver and gold layers and publishes daily funnel and product metrics to the reporting layer. It is built to be re-run rather than run once: every stage is parameterised by run date, silver deduplicates through Delta MERGE so reprocessing a day is idempotent, and a monitoring table logs rows processed per layer and execution status for every run.</p>
+
+    <figure class="shot">
+      <a href="images/databricks-1-dashboard.jpg"><img src="images/databricks-1-dashboard.jpg" alt="Databricks SQL dashboard showing daily funnel metrics, conversion rates and revenue by product" onerror="this.closest('figure').remove()"></a>
+      <figcaption>Daily funnel dashboard, refreshed automatically as each scheduled run completes.</figcaption>
+    </figure>
+
+    <ul class="findings">
+      <li><b>Revenue follows a sharp Pareto curve.</b><span>The top 20% of products generate close to 80% of revenue, which is what makes product-level daily tracking worth the pipeline cost and tells merchandising where to concentrate.</span></li>
+      <li><b>Designed for reprocessing, not just for running.</b><span>Bronze appends only the given run date with ingestion metadata attached, silver deduplicates through Delta MERGE, and a single Databricks Job chains the work on serverless compute. Backfilling a bad day is a parameter change rather than a rebuild.</span></li>
+    </ul>
+
+    <figure class="shot">
+      <a href="images/databricks-3-taskgraph.jpg"><img src="images/databricks-3-taskgraph.jpg" alt="Databricks job run history showing consecutive successful scheduled runs and their durations" onerror="this.closest('figure').remove()"></a>
+      <figcaption>Scheduled run history. Consecutive successful executions at a consistent duration, which is the point of an idempotent pipeline.</figcaption>
+    </figure>
+
+    <div class="stack-line">
+      <b>How it is built</b>
+      Bronze appends raw events for one run date with run date, ingestion timestamp and batch id attached. Silver normalises categorical fields, filters invalid records and deduplicates through Delta MERGE. Gold produces two tables: daily funnel KPIs across events, users, sessions, views, carts, purchases, revenue and conversion rate, plus product-level daily performance. A monitoring notebook writes a central run log, and the daily runner orchestrates the chain as a single entry point for scheduled execution and manual backfills.
+    </div>
+
+    <div class="links">
+      <a href="https://github.com/Sajithpemarathna/ecommerce-product-funnel-analytics-databricks">Repository on GitHub</a>
+    </div>
+  </div>
+</article>
+
+<div class="wrap">
+  <nav class="case-nav" aria-label="Other projects">
+    <a href="project-freight.html"><small>Previous project</small>Air Freight Cost and Delivery Reliability</a>
+    <a href="project-marketplace.html" style="text-align:right;"><small>Next project</small>E-Commerce Marketplace Performance Analytics</a>
+  </nav>
+</div>
+</main>
+
+<footer id="contact" class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h2>Let's connect</h2>
+        <p>I am available immediately and happy to relocate anywhere in Germany. Open to analyst, business intelligence and analytics engineering roles, and always glad to talk about data.</p>
+        <p style="margin-top:22px;"><a class="btn btn-solid" href="mailto:sajiths.pemarathna@gmail.com?subject=CV%20request" data-cv-request>Request CV</a></p>
+      </div>
+      <div class="footer-icons"><a href="https://www.linkedin.com/in/sajith-pemarathna" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a><a href="https://github.com/Sajithpemarathna" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg><span>GitHub</span></a><a href="https://public.tableau.com/app/profile/sajith.pemarathna" aria-label="Tableau Public"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="11.05" y="6" width="1.9" height="12"/><rect x="6" y="11.05" width="12" height="1.9"/><rect x="11.4" y="0.5" width="1.2" height="4.2"/><rect x="9.9" y="2" width="4.2" height="1.2"/><rect x="11.4" y="19.3" width="1.2" height="4.2"/><rect x="9.9" y="20.8" width="4.2" height="1.2"/><rect x="2" y="9.9" width="1.2" height="4.2"/><rect x="0.5" y="11.4" width="4.2" height="1.2"/><rect x="20.8" y="9.9" width="1.2" height="4.2"/><rect x="19.3" y="11.4" width="4.2" height="1.2"/><rect x="4.95" y="3.8" width="0.9" height="3.2"/><rect x="3.8" y="4.95" width="3.2" height="0.9"/><rect x="18.15" y="3.8" width="0.9" height="3.2"/><rect x="17" y="4.95" width="3.2" height="0.9"/><rect x="4.95" y="17" width="0.9" height="3.2"/><rect x="3.8" y="18.15" width="3.2" height="0.9"/><rect x="18.15" y="17" width="0.9" height="3.2"/><rect x="17" y="18.15" width="3.2" height="0.9"/></svg><span>Tableau Public</span></a><a href="mailto:sajiths.pemarathna@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/><path d="M3.2 6.3 12 12.8l8.8-6.5"/></svg><span>Email</span></a></div>
+    </div>
+    <div class="footer-base"><span>&copy; 2026 Sajith Pemarathna</span><span>Berlin, Germany</span></div>
+  </div>
+</footer>
+
+<script src="cv-request.js"></script>
+</body>
+</html>

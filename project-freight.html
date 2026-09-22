@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Air Freight Cost and Delivery Reliability &mdash; Sajith Pemarathna</title>
+<meta name="description" content="Power BI analysis of $68.8M of freight across 10,324 shipments, testing whether the air premium buys delivery reliability.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="nav-name" href="index.html">Sajith Pemarathna</a>
+    <div class="nav-right">
+      <div class="nav-links">
+        <a href="index.html#work" aria-current="page">Projects</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a class="btn btn-solid" href="mailto:sajiths.pemarathna@gmail.com?subject=CV%20request" data-cv-request>Request CV</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<article class="case-head">
+  <div class="wrap">
+    <a class="back-link" href="index.html#work">Back to all projects</a>
+    <h1 class="case-title">Air Freight Cost and Delivery Reliability</h1>
+    <p class="case-kicker">Power BI, DAX, Python, star schema modelling</p>
+
+    <p class="case-question">A health commodity programme spends 62.5% of its freight budget on air, plus another 13% on air charter. How much of that premium actually buys faster, more reliable delivery?</p>
+
+    <div class="scale">
+      <div><b>$68.8M</b><span>freight spend</span></div>
+      <div><b>10,324</b><span>shipments</span></div>
+      <div><b>43</b><span>countries</span></div>
+      <div><b>2006&ndash;15</b><span>period covered</span></div>
+    </div>
+
+    <div class="compare">
+      <p class="compare-head">Air costs six times as much per kilogram and buys 7.9 percentage points of on-time performance.</p>
+      <div class="metric">
+        <div class="metric-name">Median cost per kilogram</div>
+        <div class="row"><div class="row-name">Air</div>
+          <div class="track"><div class="bar" style="--w:100%"></div><div class="bar-value">$10.02</div></div></div>
+        <div class="row"><div class="row-name">Ocean</div>
+          <div class="track"><div class="bar alt" style="--w:16.8%"></div><div class="bar-value">$1.68</div></div></div>
+      </div>
+      <div class="metric">
+        <div class="metric-name">Delivered on time</div>
+        <div class="row"><div class="row-name">Air</div>
+          <div class="track"><div class="bar" style="--w:90.4%"></div><div class="bar-value">90.4%</div></div></div>
+        <div class="row"><div class="row-name">Ocean</div>
+          <div class="track"><div class="bar alt" style="--w:82.5%"></div><div class="bar-value">82.5%</div></div></div>
+      </div>
+    </div>
+
+    <div class="page-block">
+      <h4>What are we paying for speed?</h4>
+      <figure class="shot">
+        <a href="images/freight-1-overview.jpg"><img src="images/freight-1-overview.jpg" alt="Power BI overview page plotting cost per kilogram against on-time delivery by transport mode" onerror="this.closest('figure').remove()"></a>
+      </figure>
+      <p>The scatter carries the whole argument. Ocean sits bottom left, cheap and slightly less reliable. Air sits far right, expensive and only marginally better. Programme-wide on-time delivery is <strong>88.5%</strong> at a median rate of <strong>$7.26 per kilogram</strong>, with freight running at 5.79% of commodity value. Spend is heavily concentrated: Nigeria alone absorbs $14.27M across 1,194 shipments, and eight of the ten largest destinations are in sub-Saharan Africa.</p>
+    </div>
+
+    <div class="page-block">
+      <h4>Where does reliability actually break?</h4>
+      <figure class="shot">
+        <a href="images/freight-2-reliability.jpg"><img src="images/freight-2-reliability.jpg" alt="Power BI reliability page comparing on-time performance across modes, destinations and routing" onerror="this.closest('figure').remove()"></a>
+      </figure>
+      <p>Destination matters more than mode. Modes span 80.3% to 91.2% on time, while destinations span 75.1% to above 94%. The sharper finding is routing: among air shipments, <strong>direct drop delivers 94.9% on time while the regional distribution centre route delivers 84.1%</strong>, at comparable cost per kilogram. That route handles 5,404 of the 10,324 shipments, so the cheaper option is also the less reliable one across more than half the programme.</p>
+      <p>Lateness is not the only failure. 1,186 shipments arrive late, but 2,166 arrive more than eight days early and 22.3% arrive more than a week early. Stock landing well ahead of need is warehouse cost, not service.</p>
+    </div>
+
+    <div class="page-block">
+      <h4>What drives what we pay?</h4>
+      <figure class="shot">
+        <a href="images/freight-3-cost.jpg"><img src="images/freight-3-cost.jpg" alt="Power BI cost page showing cost per kilogram by weight band, vendor rates and freight intensity" onerror="this.closest('figure').remove()"></a>
+      </figure>
+      <p><strong>Small shipments pay a 27-fold premium.</strong> Under 100 kg costs $30.63 per kilogram, above 10,000 kg costs $1.11. Consolidation is worth more than any rate negotiation, and it sits entirely inside the programme's control. Vendor rates run from $4.02 to $17.23 per kilogram at comparable volumes, and rate does not predict reliability: one vendor delivers 99.4% on time at $5.40/kg while the RDC route delivers 82.8% at $5.05/kg.</p>
+      <p>Freight is separately invoiced on only 60% of shipments. That is not a record-keeping failure, it is contract structure. The INCO term decides whether freight is billed separately, bundled into commodity cost, or cross-referenced to another shipment.</p>
+    </div>
+
+    <div class="page-block">
+      <h4>What would changing it be worth?</h4>
+      <figure class="shot">
+        <a href="images/freight-4-mode-shift.jpg"><img src="images/freight-4-mode-shift.jpg" alt="Power BI mode shift page with a funnel narrowing to evidenced candidates and a what-if savings slider" onerror="this.closest('figure').remove()"></a>
+      </figure>
+      <p><strong>244 air shipments arrived more than 30 days ahead of schedule</strong>, so they were never time-critical. Moving them to ocean releases <strong>$1.79M</strong>, 3.4% of air freight spend, without touching a single delivery date that mattered. Nigeria accounts for $847K of the total and the RDC route for $1.65M of it. The funnel shows the narrowing rather than hiding it: 10,324 shipments, 6,760 by air or charter, 4,520 with both cost and weight recorded, 240 with 30 or more days of slack. A slider lets the reader change the slack threshold and watch the estimate resize.</p>
+    </div>
+
+    <ul class="findings">
+      <li><b>Consolidate small shipments.</b><span>The 27-fold per-kilo spread between weight bands is the largest controllable cost lever in the data.</span></li>
+      <li><b>Re-baseline the air default on proven candidates.</b><span>Start with the 244 evidenced cases rather than a blanket policy change, so the saving is defensible shipment by shipment.</span></li>
+      <li><b>Review the regional distribution centre route.</b><span>Around eleven points of on-time performance at no cost saving, across more than half the programme's shipments.</span></li>
+    </ul>
+
+    <div class="stack-line">
+      <b>How it is built</b>
+      SCMS delivery history profiled before modelling, then cleaned and classified in Python and written to a parquet star schema of one fact table and six dimensions. Modelled in Power BI with single-direction relationships from dimension to fact and a marked date table. Four report pages, each answering one question, with field parameters that let one chart cover thirty combinations, a decomposition tree for root cause, a what-if parameter on the savings model, and slicers synced across all pages.
+    </div>
+
+    <div class="stack-line">
+      <b>Measurement choices</b>
+      Median rather than mean, because individual freight costs span $0.75 to $290,000 and an average would describe nothing typical. Ratios computed only across rows where both values were reported, since dividing totals recorded on different subsets inflates the rate and still looks plausible. Matrix cells below 20 shipments blanked, so a lane with three shipments and no late deliveries cannot show as a 100% performer. Country breakdowns require 100 or more shipments.
+    </div>
+
+    <div class="stack-line">
+      <b>Assumptions and limits</b>
+      Mode shift savings are modelled, not realised. The estimate applies the median ocean rate to air shipments that arrived with schedule slack, and assumes that slack would have absorbed the longer transit. Cost measures cover the 60% of shipments with separately invoiced freight, and weight is recorded on 61.7%. 2006 carries roughly 4% of 2014's volume, so early-year comparisons are volume-sensitive.
+    </div>
+
+    <div class="links">
+      <a href="https://github.com/Sajithpemarathna/freight-cost-reliability-powerbi">Repository on GitHub</a>
+      <a href="https://drive.google.com/file/d/12-eX2bFE2btkpOI8TGqlqj-VhlY8KTS1/view?usp=sharing">Watch the walkthrough</a>
+      <a href="https://github.com/Sajithpemarathna/freight-cost-reliability-powerbi/blob/main/docs/air-freight-premium-dashboard.pdf">Dashboard as PDF</a>
+    </div>
+  </div>
+</article>
+
+<div class="wrap">
+  <nav class="case-nav" aria-label="Other projects">
+    <a href="project-energy.html"><small>Previous project</small>Forecasting Germany's Energy Consumption to 2030</a>
+    <a href="project-databricks.html" style="text-align:right;"><small>Next project</small>Customer Journey and Revenue Analytics on Databricks</a>
+  </nav>
+</div>
+</main>
+
+<footer id="contact" class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h2>Let's connect</h2>
+        <p>I am available immediately and happy to relocate anywhere in Germany. Open to analyst, business intelligence and analytics engineering roles, and always glad to talk about data.</p>
+        <p style="margin-top:22px;"><a class="btn btn-solid" href="mailto:sajiths.pemarathna@gmail.com?subject=CV%20request" data-cv-request>Request CV</a></p>
+      </div>
+      <div class="footer-icons"><a href="https://www.linkedin.com/in/sajith-pemarathna" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg><span>LinkedIn</span></a><a href="https://github.com/Sajithpemarathna" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg><span>GitHub</span></a><a href="https://public.tableau.com/app/profile/sajith.pemarathna" aria-label="Tableau Public"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="11.05" y="6" width="1.9" height="12"/><rect x="6" y="11.05" width="12" height="1.9"/><rect x="11.4" y="0.5" width="1.2" height="4.2"/><rect x="9.9" y="2" width="4.2" height="1.2"/><rect x="11.4" y="19.3" width="1.2" height="4.2"/><rect x="9.9" y="20.8" width="4.2" height="1.2"/><rect x="2" y="9.9" width="1.2" height="4.2"/><rect x="0.5" y="11.4" width="4.2" height="1.2"/><rect x="20.8" y="9.9" width="1.2" height="4.2"/><rect x="19.3" y="11.4" width="4.2" height="1.2"/><rect x="4.95" y="3.8" width="0.9" height="3.2"/><rect x="3.8" y="4.95" width="3.2" height="0.9"/><rect x="18.15" y="3.8" width="0.9" height="3.2"/><rect x="17" y="4.95" width="3.2" height="0.9"/><rect x="4.95" y="17" width="0.9" height="3.2"/><rect x="3.8" y="18.15" width="3.2" height="0.9"/><rect x="18.15" y="17" width="0.9" height="3.2"/><rect x="17" y="18.15" width="3.2" height="0.9"/></svg><span>Tableau Public</span></a><a href="mailto:sajiths.pemarathna@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="1.5"/><path d="M3.2 6.3 12 12.8l8.8-6.5"/></svg><span>Email</span></a></div>
+    </div>
+    <div class="footer-base"><span>&copy; 2026 Sajith Pemarathna</span><span>Berlin, Germany</span></div>
+  </div>
+</footer>
+
+<script src="cv-request.js"></script>
+</body>
+</html>
