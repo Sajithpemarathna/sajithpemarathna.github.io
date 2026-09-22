@@ -6,15 +6,8 @@
    ============================================================ */
 (function () {
 
-  /* ---------------- ONE-TIME SETUP ----------------
-     1. Go to https://web3forms.com
-     2. Enter sajiths.pemarathna@gmail.com and create an access key
-     3. Copy the key from the email they send and paste it below,
-        replacing PASTE_YOUR_ACCESS_KEY_HERE (keep the quotes).
-     Until you do this, the form still works: it opens the visitor's
-     email app with the request already written out.
-     -------------------------------------------------- */
-  var WEB3FORMS_KEY = "PASTE_YOUR_ACCESS_KEY_HERE";
+  
+  var WEB3FORMS_KEY = "1913efb7-24c7-48a8-bf47-56c60eb745cb";
   var OWNER_EMAIL   = "sajiths.pemarathna@gmail.com";
 
   var CONFIGURED = WEB3FORMS_KEY.indexOf("PASTE_") !== 0;
